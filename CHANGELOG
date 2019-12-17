@@ -1,0 +1,7 @@
+SAMD CORE 1.6.20 2019.12.17
+
+Modified from https://github.com/arduino/ArduinoCore-samd
+
+USB properties changed to reflect P1AM-100 product info.
+
+

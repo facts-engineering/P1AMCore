@@ -1,0 +1,86 @@
+;
+; This program is distributed in the hope that it will be useful,
+; but WITHOUT ANY WARRANTY; without even the implied warranty of
+; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+; GNU General Public License for more details.
+;
+; You should have received a copy of the GNU General Public License
+; along with this program; if not, write to the Free Software
+; Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+;
+; As a special exception, you may use this file as part of a free software
+; library without restriction.  Specifically, if other files instantiate
+; templates or use macros or inline functions from this file, or you compile
+; this file and link it with other files to produce an executable, this
+; file does not by itself cause the resulting executable to be covered by
+; the GNU General Public License.  This exception does not however
+; invalidate any other reasons why the executable file might be covered by
+; the GNU General Public License.
+;
+
+[Strings]
+DriverPackageDisplayName="P1AM-100"
+ManufacturerName="Facts Engineering"
+ServiceName="USB RS-232 Emulation Driver"
+bossa.name="Bossa Program Port"
+P1AM-100.sketch.name="P1AM-100"
+P1AM-100.bootloader.name="P1AM-100 bootloader"
+
+;[DefaultInstall]
+;CopyINF=P1AM-100.inf
+
+[Version]
+Class=Ports
+; 4d36e978-e325-11ce-bfc1-08002be10318 is for com ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Signature="$Windows NT$"
+Provider=%ManufacturerName%
+DriverPackageDisplayName=%DriverPackageDisplayName%
+; DriverVer date is MM/DD/YYYY
+DriverVer=12/13/2019,1.1.0.0
+CatalogFile=P1AM-100.cat
+
+[Manufacturer]
+%ManufacturerName%=DeviceList,NTx86, NTamd64, NTia64
+
+[DestinationDirs]
+FakeModemCopyFileSection=12
+DefaultDestDir=12
+
+[DeviceList.NTx86]
+%bossa.name%=DriverInstall, USB\VID_03EB&PID_6124
+%P1AM-100.sketch.name%=DriverInstall, USB\VID_1354&PID_4000&MI_00
+%P1AM-100.bootloader.name%=DriverInstall, USB\VID_1354&PID_4001
+
+[DeviceList.NTamd64]
+%bossa.name%=DriverInstall, USB\VID_03EB&PID_6124
+%P1AM-100.sketch.name%=DriverInstall, USB\VID_1354&PID_4000&MI_00
+%P1AM-100.bootloader.name%=DriverInstall, USB\VID_1354&PID_4001
+
+[DeviceList.NTia64]
+%bossa.name%=DriverInstall, USB\VID_03EB&PID_6124
+%P1AM-100.sketch.name%=DriverInstall, USB\VID_1354&PID_4000&MI_00
+%P1AM-100.bootloader.name%=DriverInstall, USB\VID_1354&PID_4001
+
+[DriverInstall]
+include=mdmcpq.inf,usb.inf
+CopyFiles = FakeModemCopyFileSection
+AddReg=DriverAddReg
+
+[DriverAddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,usbser.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[DriverInstall.Services]
+include=mdmcpq.inf
+AddService=usbser, 0x00000002, DriverService
+
+[DriverService]
+DisplayName=%ServiceName%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\usbser.sys
+LoadOrderGroup=Base
+
