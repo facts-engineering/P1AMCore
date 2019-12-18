@@ -14,9 +14,9 @@
           "architecture": "samd",
           "version": "1.6.20",
           "category": "Contributed",
-          "url": "file://C:/Users/kevinc/Documents/GitHub/P1AMCore.tar.gz",
+          "url": "https://github.com/facts-engineering/P1AMCore/archive/1.6.20.tar.gz",
           "archiveFileName": "P1AMCore-1.6.20.tar.gz",
-          "checksum": "SHA-256:24BAFCA88CBC29C5AD4C5E3447AB6FD1083901F6F9FDE12144B53824F7A9F400",
+          "checksum": "SHA-256:EAD235B25E26E70C75F2067D3715C6F547F863BB2A4BE273512E6D3EDF4699BC",
           "size": "3572197",
           "boards": [
             {
