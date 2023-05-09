@@ -20,7 +20,7 @@
 # https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5---3rd-party-Hardware-specification
 
 name=P1AM-100
-version=1.6.20
+version=1.6.21
 
 # Compile variables
 # -----------------

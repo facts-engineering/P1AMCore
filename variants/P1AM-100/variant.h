@@ -150,6 +150,8 @@ static const uint8_t SCK1  = PIN_SPI1_SCK;
 #define PIN_I2S_SCK         (2u)
 #define PIN_I2S_FS          (3u)
 
+#define P1AM100
+
 // Serial ports
 // ------------
 #ifdef __cplusplus
@@ -170,6 +172,13 @@ extern Uart Serial1;
 #define PIN_SERIAL1_TX (14ul)
 #define PAD_SERIAL1_TX (UART_TX_PAD_2)
 #define PAD_SERIAL1_RX (SERCOM_RX_PAD_3)
+
+// Serial 2
+extern Uart Serial2;
+#define PIN_SERIAL2_RX (1ul)
+#define PIN_SERIAL2_TX (0ul)
+#define PAD_SERIAL2_RX (SERCOM_RX_PAD_1)
+#define PAD_SERIAL2_TX (UART_TX_PAD_0)
 #endif // __cplusplus
 
 // These serial port names are intended to allow libraries and architecture-neutral
@@ -191,6 +200,8 @@ extern Uart Serial1;
 #define SERIAL_PORT_MONITOR         SerialUSB
 #define SERIAL_PORT_HARDWARE        Serial1
 #define SERIAL_PORT_HARDWARE_OPEN   Serial1
+#define SERIAL2_PORT_HARDWARE        Serial2
+#define SERIAL2_PORT_HARDWARE_OPEN   Serial2
 
 // Alias Serial to SerialUSB
 #define Serial                      SerialUSB
